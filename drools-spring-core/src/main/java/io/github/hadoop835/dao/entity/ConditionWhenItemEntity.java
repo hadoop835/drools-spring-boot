@@ -1,6 +1,8 @@
 package io.github.hadoop835.dao.entity;
 
 import com.mybatisflex.annotation.Table;
+import io.github.hadoop835.dto.ConditionWhenItemDto;
+import org.checkerframework.checker.units.qual.C;
 
 /**
  * 规矩条件
@@ -11,11 +13,11 @@ public class ConditionWhenItemEntity extends BaseEntity {
     /**
      * 字段主键
      */
-   private  String   fieldId;
+   private  Long   fieldId;
     /**
      * 操作符
      */
-   private  String  operatorId;
+   private  Long  operatorId;
     /**
      *参数值
      */
@@ -30,19 +32,33 @@ public class ConditionWhenItemEntity extends BaseEntity {
      */
     private Long  conditionWhenId;
 
-    public String getFieldId() {
+    /**
+     *
+     * @return
+     */
+    public ConditionWhenItemDto toConditionWhenItemDto(){
+        ConditionWhenItemDto conditionWhenItemDto = new ConditionWhenItemDto();
+        conditionWhenItemDto.setFieldId(getFieldId());
+        conditionWhenItemDto.setOperatorId(getOperatorId());
+        conditionWhenItemDto.setSymbol(getSymbol());
+        conditionWhenItemDto.setValue(getValue());
+        conditionWhenItemDto.setId(getId());
+        conditionWhenItemDto.setConditionWhenId(getConditionWhenId());
+        return conditionWhenItemDto;
+    }
+    public Long getFieldId() {
         return fieldId;
     }
 
-    public void setFieldId(String fieldId) {
+    public void setFieldId(Long fieldId) {
         this.fieldId = fieldId;
     }
 
-    public String getOperatorId() {
+    public Long getOperatorId() {
         return operatorId;
     }
 
-    public void setOperatorId(String operatorId) {
+    public void setOperatorId(Long operatorId) {
         this.operatorId = operatorId;
     }
 

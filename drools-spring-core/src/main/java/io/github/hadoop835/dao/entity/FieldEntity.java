@@ -1,8 +1,11 @@
 package io.github.hadoop835.dao.entity;
 
+import com.google.common.collect.Lists;
 import com.mybatisflex.annotation.Table;
+import io.github.hadoop835.dto.FieldDto;
 
 import java.lang.reflect.Field;
+import java.util.List;
 
 /**
  * 规则字段
@@ -27,6 +30,32 @@ public class FieldEntity extends BaseEntity {
      */
     private  Long    rulesId;
 
+    /**
+     *
+     * @param fieldEntities
+     * @return
+     */
+    public static List<FieldDto>  toFieldDtoList(List<FieldEntity> fieldEntities){
+        List<FieldDto> fieldDtos = Lists.newArrayList();
+        for(FieldEntity fieldEntity: fieldEntities){
+            fieldDtos.add(fieldEntity.toFieldDto());
+        }
+        return fieldDtos;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public  FieldDto  toFieldDto(){
+        FieldDto fieldDto = new FieldDto();
+        fieldDto.setFieldName(getFieldName());
+        fieldDto.setFieldType(getFieldType());
+        fieldDto.setName(getName());
+        fieldDto.setRulesId(getRulesId());
+        fieldDto.setId(getId());
+        return fieldDto;
+    }
 
     public String getName() {
         return name;

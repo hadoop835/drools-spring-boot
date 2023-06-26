@@ -1,6 +1,7 @@
 package io.github.hadoop835.dao.entity;
 
 import com.mybatisflex.annotation.Table;
+import io.github.hadoop835.dto.OperatorDto;
 
 /**
  * 基础数据操作符维护
@@ -21,6 +22,18 @@ public class OperatorEntity extends BaseEntity {
      */
     private Integer  sort;
 
+    /**
+     *
+     * @return
+     */
+    public OperatorDto toOperatorDto(){
+        OperatorDto operatorDto = new OperatorDto();
+        operatorDto.setId(getId());
+        operatorDto.setName(getName());
+        operatorDto.setValue(getValue());
+        operatorDto.setSort(getSort());
+        return operatorDto;
+    }
     public String getName() {
         return name;
     }

@@ -1,0 +1,69 @@
+[{
+  "name": "score_1",
+  "rulesId": "29057927929577472",
+  "action": "$order.setScore(0)",
+  "conditionWhenDtos": [{
+    "varName": "$order",
+    "varValue": "Order",
+    "symbol": "",
+    "conditionWhenItemDtos": [{
+      "fieldId": "30863483979857920",
+      "operatorId": "30776729295392773",
+      "value": "100"
+    }]
+  }]
+},{
+  "name": "score_2",
+  "rulesId": "29057927929577472",
+  "action": "$order.setScore(100)",
+  "conditionWhenDtos": [{
+    "varName": "$order",
+    "varValue": "Order",
+    "symbol": "",
+    "conditionWhenItemDtos": [{
+      "fieldId": "30863483979857920",
+      "operatorId": "30776729295392777",
+      "value": "100"
+    },{
+      "fieldId": "30863483979857920",
+      "operatorId": "30776729295392769",
+      "value": "500",
+      "symbol": "&&"
+
+    }]
+  }]
+},{
+  "name": "score_3",
+  "rulesId": "29057927929577472",
+  "action": "$order.setScore(500)",
+  "conditionWhenDtos": [{
+    "varName": "$order",
+    "varValue": "Order",
+    "symbol": "",
+    "conditionWhenItemDtos": [{
+      "fieldId": "30863483979857920",
+      "operatorId": "30776729295392777",
+      "value": "500"
+    },{
+      "fieldId": "30863483979857920",
+      "operatorId": "30776729295392769",
+      "value": "1000",
+      "symbol": "&&"
+
+    }]
+  }]
+},{
+  "name": "score_4",
+  "rulesId": "29057927929577472",
+  "action": "$order.setScore(1000)",
+  "conditionWhenDtos": [{
+    "varName": "$order",
+    "varValue": "Order",
+    "symbol": "",
+    "conditionWhenItemDtos": [{
+      "fieldId": "30863483979857920",
+      "operatorId": "30776729295392777",
+      "value": "1000"
+    }]
+  }]
+}]

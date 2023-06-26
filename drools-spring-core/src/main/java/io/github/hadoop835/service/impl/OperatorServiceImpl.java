@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import io.github.hadoop835.dao.entity.OperatorEntity;
 import io.github.hadoop835.dao.mapper.OperatorMapper;
+import io.github.hadoop835.dto.OperatorDto;
 import io.github.hadoop835.service.OperatorService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,4 +54,35 @@ public class OperatorServiceImpl implements OperatorService {
 //        LOGGER.info("初始化操作成功");
 
     }
+
+    /**
+     *
+     * @return
+     */
+    @Override
+    public List<OperatorDto> listAll() {
+        List<OperatorEntity> operatorEntities =  operatorMapper.selectAll();
+        List<OperatorDto> operatorDtos = Lists.newArrayList();
+        for(OperatorEntity operatorEntity :operatorEntities){
+            operatorDtos.add(operatorEntity.toOperatorDto());
+        }
+        return operatorDtos;
+    }
+
+    /**
+     *
+     * @param operatorDtos
+     * @param operatorId
+     * @return
+     */
+    @Override
+    public   OperatorDto  getOperatorById(List<OperatorDto> operatorDtos, Long operatorId){
+        for(OperatorDto operatorDto : operatorDtos){
+            if(operatorDto.getId().equals(operatorId)){
+                return operatorDto;
+            }
+        }
+        return null;
+    }
+
 }

@@ -1,6 +1,7 @@
 package io.github.hadoop835.dao.entity;
 
 import com.mybatisflex.annotation.Table;
+import io.github.hadoop835.dto.ConditionWhenDto;
 
 /**
  * 条件
@@ -20,7 +21,24 @@ public class ConditionWhenEntity extends BaseEntity {
      *  连接词 and  or
      */
     private  String   symbol;
+    /**
+     * 条件
+     */
+    private  Long  conditionId;
 
+    /**
+     *
+     * @return
+     */
+    public ConditionWhenDto toConditionWhenDto(){
+        ConditionWhenDto conditionWhenDto = new ConditionWhenDto();
+        conditionWhenDto.setId(getId());
+        conditionWhenDto.setVarName(getVarName());
+        conditionWhenDto.setVarValue(getVarValue());
+        conditionWhenDto.setSymbol(getSymbol());
+        conditionWhenDto.setConditionId(getConditionId());
+        return conditionWhenDto;
+    }
 
     public String getVarName() {
         return varName;
@@ -44,5 +62,13 @@ public class ConditionWhenEntity extends BaseEntity {
 
     public void setSymbol(String symbol) {
         this.symbol = symbol;
+    }
+
+    public Long getConditionId() {
+        return conditionId;
+    }
+
+    public void setConditionId(Long conditionId) {
+        this.conditionId = conditionId;
     }
 }

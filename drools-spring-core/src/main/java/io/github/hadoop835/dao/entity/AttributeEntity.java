@@ -21,9 +21,9 @@ public class AttributeEntity extends BaseEntity {
      */
     private  String   attrValue;
     /**
-     * 规则主键
+     * 条件属性
      */
-    private  Long    rulesId;
+    private  Long    conditionId;
 
     public String getName() {
         return name;
@@ -49,11 +49,11 @@ public class AttributeEntity extends BaseEntity {
         this.attrValue = attrValue;
     }
 
-    public Long getRulesId() {
-        return rulesId;
+    public Long getConditionId() {
+        return conditionId;
     }
 
-    public void setRulesId(Long rulesId) {
-        this.rulesId = rulesId;
+    public void setConditionId(Long conditionId) {
+        this.conditionId = conditionId;
     }
 }
