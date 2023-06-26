@@ -18,6 +18,8 @@ public abstract class BaseEntity {
     @Column(onUpdateValue = "now()",onInsertValue = "now()")
     private LocalDateTime updateTime;
     private String   updateBy;
+    @Column(onUpdateValue = "version + 1")
+    private Integer version;
 
     public Long getId() {
         return id;
@@ -57,5 +59,14 @@ public abstract class BaseEntity {
 
     public void setUpdateBy(String updateBy) {
         this.updateBy = updateBy;
+    }
+
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
     }
 }

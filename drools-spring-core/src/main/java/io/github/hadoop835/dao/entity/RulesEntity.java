@@ -17,8 +17,7 @@ public class RulesEntity extends BaseEntity implements Serializable {
     private String instanceId;
     private String name;
     private byte[] rules;
-    @Column(onUpdateValue = "version + 1")
-    private Integer version;
+
 
 
     public String getName() {
@@ -37,13 +36,6 @@ public class RulesEntity extends BaseEntity implements Serializable {
         this.rules = rules;
     }
 
-    public Integer getVersion() {
-        return version;
-    }
-
-    public void setVersion(Integer version) {
-        this.version = version;
-    }
 
     public String getInstanceId() {
         return instanceId;
