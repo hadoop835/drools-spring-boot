@@ -11,6 +11,13 @@ public class ConditionDto extends BaseDto{
     private String  name;
     private Long  rulesId;
     private String action;
+    /**
+     * 保存属性
+     */
+    private List<ConditionAttrDto> attributeDtos = Lists.newArrayList();
+    /**
+     * 保存条件
+     */
     private List<ConditionWhenDto> conditionWhenDtos= Lists.newArrayList();
 
 
@@ -46,6 +53,14 @@ public class ConditionDto extends BaseDto{
         this.conditionWhenDtos = conditionWhenDtos;
     }
 
+    public List<ConditionAttrDto> getAttributeDtos() {
+        return attributeDtos;
+    }
+
+    public void setAttributeDtos(List<ConditionAttrDto> attributeDtos) {
+        this.attributeDtos = attributeDtos;
+    }
+
     /**
      *
      * @param conditionWhenDto
@@ -53,6 +68,16 @@ public class ConditionDto extends BaseDto{
     public   void   addConditionWhenDto(ConditionWhenDto conditionWhenDto){
         if(!conditionWhenDtos.contains(conditionWhenDto)){
             conditionWhenDtos.add(conditionWhenDto);
+        }
+    }
+
+    /**
+     *
+     * @param attributeDto
+     */
+    public   void   addAttributeDto(ConditionAttrDto attributeDto){
+        if(!attributeDtos.contains(attributeDto)){
+            attributeDtos.add(attributeDto);
         }
     }
 }

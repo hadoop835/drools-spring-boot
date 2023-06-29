@@ -1,13 +1,14 @@
 package io.github.hadoop835.dao.entity;
 
 import com.mybatisflex.annotation.Table;
+import io.github.hadoop835.dto.ConditionAttrDto;
 
 /**
  * 属性
  * @author chenzhh
  */
-@Table(value = "dr_attribute")
-public class AttributeEntity extends BaseEntity {
+@Table(value = "dr_condition_attr")
+public class ConditionAttrEntity extends BaseEntity {
     /**
      * 名称
      */
@@ -24,6 +25,7 @@ public class AttributeEntity extends BaseEntity {
      * 条件属性
      */
     private  Long    conditionId;
+
 
     public String getName() {
         return name;
@@ -56,4 +58,30 @@ public class AttributeEntity extends BaseEntity {
     public void setConditionId(Long conditionId) {
         this.conditionId = conditionId;
     }
+
+
+    public ConditionAttrEntity toAttributeEntity(ConditionAttrDto attributeDto){
+              setId(attributeDto.getId());
+              setAttrName(attributeDto.getAttrName());
+              setAttrValue(attributeDto.getAttrValue());
+              setName(attributeDto.getName());
+              setConditionId(attributeDto.getConditionId());
+              setVersion(1);
+        return this;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public ConditionAttrDto toAttributeDto(){
+        ConditionAttrDto attributeDto = new ConditionAttrDto();
+        attributeDto.setId(getId());
+        attributeDto.setAttrName(getAttrName());
+        attributeDto.setAttrValue(getAttrValue());
+        attributeDto.setName(getName());
+        attributeDto.setConditionId(getConditionId());
+        return attributeDto;
+    }
+
 }

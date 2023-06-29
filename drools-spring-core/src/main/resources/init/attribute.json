@@ -1,0 +1,86 @@
+[{
+  "name": "salience",
+  "remark": "指定规则执行优先级,数值越大越优先执行",
+  "type": "number",
+  "attributeItemDtos": []
+},{
+  "name": "dialect",
+  "remark": "指定规则使用的语言类型，取值为java和mvel",
+  "type": "radio",
+  "attributeItemDtos": [{
+    "value": "java",
+    "remark": "语言类型java"
+  },{
+    "value": "mvel",
+    "remark": "语言类型mvel"
+  }]
+},{
+  "name": "enabled",
+  "remark": "指定规则是否启用",
+  "type": "radio",
+  "attributeItemDtos": [{
+    "value": "false",
+    "remark": "停用"
+  },{
+    "value": "true",
+    "remark": "启用"
+  }]
+},{
+  "name": "date-effective",
+  "remark": "指定规则生效时间,默认日期格式为：dd-MMM-yyyy",
+  "type": "date",
+  "attributeItemDtos": []
+},{
+  "name": "date-expires",
+  "remark": "指定规则失效时间,默认日期格式为：dd-MMM-yyyy",
+  "type": "date",
+  "attributeItemDtos": []
+},{
+  "name": "activation-group",
+  "remark": "激活分组，具有相同分组名称的规则只能有一个规则触发",
+  "type": "input",
+  "attributeItemDtos": []
+},{
+  "name": "agenda-group",
+  "remark": "议程分组，只有获取焦点的组中的规则才有可能触发",
+  "type": "input",
+  "attributeItemDtos": []
+},{
+  "name": "timer",
+  "remark": "定时器，指定规则触发的时间",
+  "type": "crontab",
+  "attributeItemDtos": []
+},{
+  "name": "auto-focus",
+  "remark": "自动获取焦点，一般结合agenda-group一起使用",
+  "type": "radio",
+  "attributeItemDtos": [{
+    "value": "false",
+    "remark": "停用"
+  },{
+    "value": "true",
+    "remark": "启用"
+  }]
+},{
+  "name": "no-loop",
+  "remark": "防止死循环，防止自己更新规则再次触发",
+  "type": "radio",
+  "attributeItemDtos": [{
+    "value": "false",
+    "remark": "停用"
+  },{
+    "value": "true",
+    "remark": "启用"
+  }]
+},{
+  "name": "lock-on-active",
+  "remark": "no-loop增强版本。可防止别人更新规则再次出发",
+  "type": "radio",
+  "attributeItemDtos": [{
+    "value": "false",
+    "remark": "停用"
+  },{
+    "value": "true",
+    "remark": "启用"
+  }]
+}]

@@ -136,5 +136,6 @@
     <orderEntry type="library" name="Maven: org.freemarker:freemarker:2.3.32" level="project" />
     <orderEntry type="library" name="Maven: com.alibaba:transmittable-thread-local:2.14.2" level="project" />
     <orderEntry type="library" name="Maven: cn.hutool:hutool-core:5.8.20" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba.fastjson2:fastjson2:2.0.34" level="project" />
   </component>
 </module>

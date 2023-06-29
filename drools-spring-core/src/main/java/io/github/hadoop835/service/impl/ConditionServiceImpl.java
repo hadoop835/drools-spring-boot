@@ -2,8 +2,6 @@ package io.github.hadoop835.service.impl;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-import com.mybatisflex.core.query.QueryColumn;
-import com.mybatisflex.core.query.QueryCondition;
 import com.mybatisflex.core.query.QueryWrapper;
 import io.github.hadoop835.dao.entity.ConditionEntity;
 import io.github.hadoop835.dao.entity.ConditionWhenEntity;
@@ -12,6 +10,7 @@ import io.github.hadoop835.dao.mapper.ConditionMapper;
 import io.github.hadoop835.dao.mapper.ConditionWhenItemMapper;
 import io.github.hadoop835.dao.mapper.ConditionWhenMapper;
 import io.github.hadoop835.dto.*;
+import io.github.hadoop835.service.ConditionAttrService;
 import io.github.hadoop835.service.ConditionService;
 import io.github.hadoop835.service.FieldService;
 import io.github.hadoop835.service.OperatorService;
@@ -41,6 +40,8 @@ public class ConditionServiceImpl implements ConditionService {
     private OperatorService operatorService;
     @Resource
     private FieldService  fieldService;
+    @Resource
+    private ConditionAttrService conditionAttrService;
 
     /**
      *  创建规则
@@ -82,6 +83,9 @@ public class ConditionServiceImpl implements ConditionService {
                 }
                 conditionWhenItemMapper.insertBatch(conditionWhenItemEntities);
             }
+            //保存属性
+            List<ConditionAttrDto> attributeDtos = conditionDto.getAttributeDtos();
+            conditionAttrService.createAttribute(attributeDtos);
         }
     }
 
@@ -103,8 +107,10 @@ public class ConditionServiceImpl implements ConditionService {
             conditionDtos.add(conditionEntity.toConditionDto());
         }
 
-        QueryWrapper whenQueryWrapper = new QueryWrapper();
+        //查询属性
+        List<ConditionAttrDto> attributeDtos = conditionAttrService.getAttributeDtoByConditionIds(conditionIds);
 
+        QueryWrapper whenQueryWrapper = new QueryWrapper();
         whenQueryWrapper.where(CONDITION_WHEN_ENTITY.CONDITION_ID.in(conditionIds));
         List<ConditionWhenEntity>  conditionWhenEntities = conditionWhenMapper.selectListByQuery(whenQueryWrapper);
         Set<Long>  conditionWhenIds = Sets.newHashSet();
@@ -144,6 +150,12 @@ public class ConditionServiceImpl implements ConditionService {
                     if(conditionWhenDto.getId().equals(conditionWhenItemDto.getConditionWhenId())){
                         conditionWhenDto.addConditionWhenDto(conditionWhenItemDto);
                     }
+                }
+            }
+            //属性
+            for(ConditionAttrDto attributeDto : attributeDtos){
+                if(conditionDto.getId().equals(attributeDto.getConditionId())){
+                    conditionDto.addAttributeDto(attributeDto);
                 }
             }
         }
